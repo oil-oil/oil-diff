@@ -323,6 +323,8 @@ def lint_report(repo: Path, report_dir: Path) -> tuple[list[str], list[str]]:
 
 
 def main() -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="Lint an oil-diff HTML change report.")
     parser.add_argument("--repo", default=".", help="Path to the Git repository.")
     parser.add_argument("--report-dir", required=True, help="Path to the .oil-diff report directory.")

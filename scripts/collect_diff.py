@@ -246,6 +246,8 @@ def collect_diff(repo: Path, out_dir: Path, range_specs: list[str] | None = None
 
 
 def main() -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="Collect Git diff snapshots into .oil-diff/assets/diff-data.json.")
     parser.add_argument("--repo", default=".", help="Path to the Git repository.")
     parser.add_argument("--output", default=None, help="Output directory (defaults to <repo>/.oil-diff).")

@@ -1116,6 +1116,8 @@ def render_html_document(data: dict[str, object], spec: dict[str, object]) -> st
 
 
 def main() -> int:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="Render standalone HTML change report.")
     parser.add_argument(
         "--report-dir",
